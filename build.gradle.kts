@@ -1,6 +1,8 @@
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val jdbi_version: String by project
+val postgresql_version: String by project
 
 plugins {
     application
@@ -25,6 +27,9 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("org.jdbi:jdbi3-sqlobject:$jdbi_version")
+    implementation("org.postgresql:postgresql:$postgresql_version")
+    implementation("org.jdbi:jdbi3-kotlin:$jdbi_version")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
