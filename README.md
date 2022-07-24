@@ -2,6 +2,10 @@
 
 TODO管理webアプリケーションのバックエンドAPIです．
 
+## 実行方法
+- 開発環境での実行：IntelliJ IDEAの機能を用いて実行する．Application.ktファイルのmain関数を右クリックすると，"Run ApplicationKt"と表示されるため，これをクリックして実行する．
+- 本番環境での実行：TODO
+
 ## tools
 - ktor
 - jdbi

@@ -1,7 +1,9 @@
 package com.example.plugins
 
+import io.ktor.serialization.jackson.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
+import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.response.*
 import org.jdbi.v3.core.Jdbi
 import org.jdbi.v3.sqlobject.SqlObjectPlugin
@@ -15,12 +17,19 @@ interface TodoDao {
     fun selectTodoList(): List<String>
 }
 fun Application.configureRouting() {
+    install(ContentNegotiation) {
+        jackson{
+        }
+    }
 
     routing {
         get("/") {
             val todoDao: TodoDao = jdbi.onDemand(TodoDao::class.java)
             val titles = todoDao.selectTodoList()
             call.respond(titles.joinToString())
+        }
+        get("/test") {
+            call.respond(mapOf("todolist" to "todo1"))
         }
     }
 }
